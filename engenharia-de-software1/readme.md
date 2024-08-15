@@ -7,6 +7,6 @@ Within Google, we sometimes say, “Software engineering is programming integrat
 Comentário: Programação é uma parte da engenharia de software, porém aliada com a manutenção e modificação do que foi produzido. Novamente, nesse ramo o tempo se torna um aspecto valioso do trabalho.
 
 Exemplos de trade-offs: 
-1 - Optar pela utilização de uma linguagem de programação mais fácil de entender, porém de processamento mais lento. São adequadas no caso de aprendizagem e tarefas mais simples.
-2 - 
-3 - 
+1 - Python x Java - Python é uma linguagem de programação mais fácil de entender, porém de processamento mais lento. É adequado no caso de aprendizagem e tarefas mais simples, porém com um leque de possibilidades menor.
+2 - Windows x Linux - Windows é um SO mais conhecido e amigável ao usuário, porém apresenta uma menor estabilidade e confiabilidade quando comparado ao Linux em um contexto de servidores.
+3 - MySQL x MongoDB - MySQL possui uma maior integridade e consistência dos dados, porém apresentar uma menor flexibidade quando comparado ao MongoDB.
