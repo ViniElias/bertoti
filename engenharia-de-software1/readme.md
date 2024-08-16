@@ -12,4 +12,5 @@ Atividade 2 - Exemplos de trade-offs:
 3 - MySQL x MongoDB - MySQL possui uma maior integridade e consistência dos dados, porém apresentar uma menor flexibidade quando comparado ao MongoDB.
 
 Atividade 3 - Trade-offs da arquitetura da Netflix
+./netflix.jpg_large/
 A arquitetura geral da Netflix é separada em diferentes seções específicas para cada área. Dentro dessas seções são utilizadas diferentes linguagens de acordo com suas vantagens naquele contexto. 
