@@ -34,23 +34,6 @@ public class Produto{
     }
 }
 
-package Bertoti;
-import java.util.List;
-import java.util.LinkedList;
-
-public class Loja {
-    private List<Produto> produtos = new LinkedList<Produto>();
-    public void adicionarProduto(Produto produto){
-        produtos.add(produto);
-    }
-    public List<Produto> buscarProdutoPorID(String id){
-        List<Produto> encontrados = new LinkedList<Produto>();
-        for(Produto produto: produtos){
-            if(produto.getId().equals(id))encontrados.add(produto);
-        }
-        return encontrados;
-    }
-}
 
 import java.util.List;
 import java.util.LinkedList;
