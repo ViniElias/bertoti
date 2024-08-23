@@ -17,8 +17,8 @@ A arquitetura geral da Netflix é separada em diferentes seções específicas p
 
 Atividade 4 - Classes UML
 
-package Bertoti;
-public class Produto{
+    package Bertoti;
+    public class Produto{
 
     private String id;
     private String nome;
@@ -34,7 +34,7 @@ public class Produto{
     public void setNome(String n){
         nome=n;
     }
-}
+    }
 
 import java.util.List;
 import java.util.LinkedList;
