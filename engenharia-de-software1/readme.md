@@ -60,4 +60,4 @@ Atividade 4 - Classes UML
             return encontrados;
         }
     }    
-![Captura de tela 2024-08-23 082836](https://github.com/user-attachments/assets/86855392-2aab-4efb-8e52-6f179494aa7d)
+![Captura de tela 2024-08-23 084452](https://github.com/user-attachments/assets/0565cc78-0321-4727-bcdb-1e6349b3daff)
