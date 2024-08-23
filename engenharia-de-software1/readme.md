@@ -1,4 +1,4 @@
-Atividade 1 - We see three critical differences between programming and software engineering: time, scale, and the trade-offs at play. On a software engineering project, engineers need to be more concerned with the passage of time and the eventual need for change. In a software engineering organization, we need to be more concerned about scale and efficiency, both for the software we produce as well as for the organization that is producing it. Finally, as software engineers, we are asked to make more complex decisions with higher-stakes outcomes, often based on imprecise estimates of time and growth.
+![image](https://github.com/user-attachments/assets/2d72b7c3-4ad8-4e39-b7c2-6bc69ede7ebb)Atividade 1 - We see three critical differences between programming and software engineering: time, scale, and the trade-offs at play. On a software engineering project, engineers need to be more concerned with the passage of time and the eventual need for change. In a software engineering organization, we need to be more concerned about scale and efficiency, both for the software we produce as well as for the organization that is producing it. Finally, as software engineers, we are asked to make more complex decisions with higher-stakes outcomes, often based on imprecise estimates of time and growth.
 
 Comentário: A engenharia de software valoriza mais o tempo de trabalho e sua relação com a eficiência, e profissionais dessa área trabalham com valores mais significativos de resultados, quando comparados com profissionais de programação.
 
@@ -14,3 +14,65 @@ Atividade 2 - Exemplos de trade-offs:
 Atividade 3 - Trade-offs da arquitetura da Netflix
 ![Arquitetura Netflix](./netflix.jpg_large)
 A arquitetura geral da Netflix é separada em diferentes seções específicas para cada área. Dentro dessas seções são utilizadas diferentes linguagens de acordo com suas vantagens naquele contexto. Observa-se a divisão em: Frontend (API, mobile, web), Backend (serviços, banco de dados, comunicação/streaming), Streaming (video, transcodificador), Big Data (armazenamento de dados, processamento de dados) e CI/CD (desenvolvimento e operações). Para cada uma dessas vertentes menores, são escolhidas as linguagens que melhor se adequam à sua função. Vale ressaltar que nenhum dos serviços utilizados é isento de desvantagens/defeitos, mas são escolhidos pontualmente visando suas tarefas especializadas.
+
+Atividade 4 - Classes UML
+
+package Bertoti;
+public class Produto{
+    private String id;
+    private String nome;
+    public String getId(){
+        return id;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public void setId(String i){
+        id=i;
+    }
+    public void setNome(String n){
+        nome=n;
+    }
+}
+
+package Bertoti;
+import java.util.List;
+import java.util.LinkedList;
+
+public class Loja {
+    private List<Produto> produtos = new LinkedList<Produto>();
+    public void adicionarProduto(Produto produto){
+        produtos.add(produto);
+    }
+    public List<Produto> buscarProdutoPorID(String id){
+        List<Produto> encontrados = new LinkedList<Produto>();
+        for(Produto produto: produtos){
+            if(produto.getId().equals(id))encontrados.add(produto);
+        }
+        return encontrados;
+    }
+}
+
+import java.util.List;
+import java.util.LinkedList;
+
+public class Loja {
+    private List<Produto> produtos = new LinkedList<>();
+    public void adicionarProduto(Produto produto){
+        if (produto != null) {
+            produtos.add(produto);
+        }
+    }
+    public List<Produto> buscarProdutoPorID(String id){
+        List<Produto> encontrados = new LinkedList<>();
+        if (id != null) {
+            for (Produto produto : produtos) {
+                if (id.equals(produto.getId())) {
+                    encontrados.add(produto);
+                }
+            }
+        }
+        return encontrados;
+    }
+}
+![Captura de tela 2024-08-23 082836](https://github.com/user-attachments/assets/86855392-2aab-4efb-8e52-6f179494aa7d)
