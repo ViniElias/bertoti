@@ -20,44 +20,44 @@ Atividade 4 - Classes UML
     package Bertoti;
     public class Produto{
 
-    private String id;
-    private String nome;
-    public String getId(){
-        return id;
-    }
-    public String getNome(){
-        return nome;
-    }
-    public void setId(String i){
-        id=i;
-    }
-    public void setNome(String n){
-        nome=n;
-    }
-    }
-
-import java.util.List;
-import java.util.LinkedList;
-
-public class Loja {
-
-    private List<Produto> produtos = new LinkedList<>();
-    public void adicionarProduto(Produto produto){
-        if (produto != null){
-            produtos.add(produto);
+        private String id;
+        private String nome;
+        public String getId(){
+            return id;
         }
-        
+        public String getNome(){
+            return nome;
+        }
+        public void setId(String i){
+            id=i;
+        }
+        public void setNome(String n){
+            nome=n;
+        }
     }
-    public List<Produto> buscarProdutoPorID(String id){
-        List<Produto> encontrados = new LinkedList<>();
-        if (id != null) {
-            for (Produto produto : produtos) {
-                if (id.equals(produto.getId())) {
-                    encontrados.add(produto);
+
+    import java.util.List;
+    import java.util.LinkedList;
+    
+    public class Loja {
+
+        private List<Produto> produtos = new LinkedList<>();
+        public void adicionarProduto(Produto produto){
+            if (produto != null){
+                produtos.add(produto);
+            }
+            
+        }
+        public List<Produto> buscarProdutoPorID(String id){
+            List<Produto> encontrados = new LinkedList<>();
+            if (id != null) {
+                for (Produto produto : produtos) {
+                    if (id.equals(produto.getId())) {
+                        encontrados.add(produto);
+                    }
                 }
             }
+            return encontrados;
         }
-        return encontrados;
-    }
-}
+    }    
 ![Captura de tela 2024-08-23 082836](https://github.com/user-attachments/assets/86855392-2aab-4efb-8e52-6f179494aa7d)
