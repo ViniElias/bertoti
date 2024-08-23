@@ -15,63 +15,63 @@ Atividade 3 - Trade-offs da arquitetura da Netflix
 ![Arquitetura Netflix](./netflix.jpg_large)
 A arquitetura geral da Netflix é separada em diferentes seções específicas para cada área. Dentro dessas seções são utilizadas diferentes linguagens de acordo com suas vantagens naquele contexto. Observa-se a divisão em: Frontend (API, mobile, web), Backend (serviços, banco de dados, comunicação/streaming), Streaming (video, transcodificador), Big Data (armazenamento de dados, processamento de dados) e CI/CD (desenvolvimento e operações). Para cada uma dessas vertentes menores, são escolhidas as linguagens que melhor se adequam à sua função. Vale ressaltar que nenhum dos serviços utilizados é isento de desvantagens/defeitos, mas são escolhidos pontualmente visando suas tarefas especializadas.
 
-Atividade 4 - Classes UML<br>
-package Bertoti;<br>
-public class Produto{<br>
-    private String id;<br>
-    private String nome;<br>
-    public String getId(){<br>
-        return id;<br>
-    }<br>
-    public String getNome(){<br>
-        return nome;<br>
-    }<br>
-    public void setId(String i){<br>
-        id=i;<br>
-    }<br>
-    public void setNome(String n){<br>
-        nome=n;<br>
-    }<br>
-}<br>
+Atividade 4 - Classes UML
+package Bertoti;
+public class Produto{
+    private String id;
+    private String nome;
+    public String getId(){
+        return id;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public void setId(String i){
+        id=i;
+    }
+    public void setNome(String n){
+        nome=n;
+    }
+}
 
-package Bertoti;<br>
-import java.util.List;<br>
-import java.util.LinkedList;<br>
+package Bertoti;
+import java.util.List;
+import java.util.LinkedList;
 
-public class Loja {<br>
-    private List<Produto> produtos = new LinkedList<Produto>();<br>
-    public void adicionarProduto(Produto produto){<br>
-        produtos.add(produto);<br>
-    }<br>
-    public List<Produto> buscarProdutoPorID(String id){<br>
-        List<Produto> encontrados = new LinkedList<Produto>();<br>
-        for(Produto produto: produtos){<br>
-            if(produto.getId().equals(id))encontrados.add(produto);<br>
-        }<br>
-        return encontrados;<br>
-    }<br>
-}<br>
+public class Loja {
+    private List<Produto> produtos = new LinkedList<Produto>();
+    public void adicionarProduto(Produto produto){
+        produtos.add(produto);
+    }
+    public List<Produto> buscarProdutoPorID(String id){
+        List<Produto> encontrados = new LinkedList<Produto>();
+        for(Produto produto: produtos){
+            if(produto.getId().equals(id))encontrados.add(produto);
+        }
+        return encontrados;
+    }
+}
 
-import java.util.List;<br>
-import java.util.LinkedList;<br>
+import java.util.List;
+import java.util.LinkedList;
 
-public class Loja {<br>
-    private List<Produto> produtos = new LinkedList<>();<br>
-    public void adicionarProduto(Produto produto){<br>
-        if (produto != null) {<br>
-            produtos.add(produto);<br>
-        }<br>
-    }<br>
-    public List<Produto> buscarProdutoPorID(String id){<br>
-        List<Produto> encontrados = new LinkedList<>();<br>
-        if (id != null) {<br>
-            for (Produto produto : produtos) {<br>
-                if (id.equals(produto.getId())) {<br>
-                    encontrados.add(produto);<br>
-                }<br>
-            }<br>
-        }<br>
-        return encontrados;<br>
-    }<br>
+public class Loja {
+    private List<Produto> produtos = new LinkedList<>();
+    public void adicionarProduto(Produto produto){
+        if (produto != null){
+            produtos.add(produto);
+        }
+    }
+    public List<Produto> buscarProdutoPorID(String id){
+        List<Produto> encontrados = new LinkedList<>();
+        if (id != null) {
+            for (Produto produto : produtos) {
+                if (id.equals(produto.getId())) {
+                    encontrados.add(produto);
+                }
+            }
+        }
+        return encontrados;
+    }
 }
 ![Captura de tela 2024-08-23 082836](https://github.com/user-attachments/assets/86855392-2aab-4efb-8e52-6f179494aa7d)
