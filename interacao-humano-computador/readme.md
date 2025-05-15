@@ -1,11 +1,51 @@
-Como era a Interação Humano Computador +- 1970?
-Essa interação ocorria com o CLI: Command-Line Interface, onde o usuário interage com o sistema por meio de comandos de texto. Não há elementos gráficos, e o usuário precisa saber os comandos e sua sintaxe para interagir com o sistema.
- 
-E dos +- 80 até 2007?
-Essa interação ocorria com a GUI: Graphical User Interface, onde o usuário interage com o sistema através de elementos gráficos como botões e menus. Ao invés de digitar comandos, o usuário pode interagir com objetos visualmente.
- 
-E de 2007 até agora?
-Essa interçaão ocorre com a NUI: Natural User Interface, onde o usuário interage de maneira mais "natural", geralmente com gestos, toques ou movimentos corporais, como em celulares atuais, em vez de usar um dispositivo de entrada tradicional como um teclado ou mouse.
- 
-Qual o futuro da IHC?
-É possível que essa interação evolua para que seja possível que usuários interajam com sistemas apenas utilizando conexões cerebrais, sem a necessidade de dispositivos tradicionais de entrada ou movimentos e gestos.
+# Agente Inteligente de Análise de Produtos
+Um assistente especializado em pesquisa e análise de produtos, desenvolvido para:
+
+🔍 Buscar preços em múltiplas lojas (via SerpAPI)
+
+🤖 Responder naturalmente a perguntas sobre produtos e preços
+
+📊 Analisar pontos fortes e fracos com base em especificações técnicas e avaliações (ainda nao implementado)
+
+💡 Comparar produtos e recomendar a melhor opção por custo-benefício (ainda nao implementado)
+
+
+## Tecnologias Utilizadas
+Python + Ollama (modelo Qwen2.5)
+
+SerpAPI (integração com Google Shopping)
+
+Arquitetura de agentes modulares (tools/prompts)
+
+Gradio (interface web)
+
+### Funcionalidades Chave
+- ✅ Pesquisa de preços em tempo real
+- ✅ Análise técnica e de reviews
+- ✅ Comparativo com produtos similares
+- ✅ Respostas formatadas e organizadas
+
+Exemplo de uso: "Analise o iPhone 15 Pro com preços e compare com o Samsung S24"
+## Passos para executar
+### Crie o ambiente virtual
+
+```bash
+python -m venv venv
+venv\Scripts\activate     # Windows
+```
+
+### Instale as dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+### Instale o Ollama localmente e rode o comando 
+```bash
+ollama pull qwen2.5:3b
+```
+
+### Inicie o agente
+```bash
+python app.py
+```
