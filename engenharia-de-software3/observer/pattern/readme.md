@@ -1,91 +1,136 @@
-<img width="477" height="763" alt="image" src="https://github.com/user-attachments/assets/7c472de2-01c4-4906-9f76-3976c2d66129" />
-<br><br>
+# Observer: Pattern
 
-    // Observer
-    interface Licitante {
-        void atualizar(String nomeProduto, double novoLance);
-    }
-
+**Objetivo:** Definir uma dependência um-para-muitos entre objetos, de modo que quando um objeto muda de estado, todos os seus dependentes sejam notificados.<br>
+**Solução:** Usar interfaces para desacoplar o Subject (quem gera o evento) dos Observers (quem escuta).
 <br>
 
-    // Subject
-    interface ProdutoLeilao {
-        void registrarLicitante(Licitante licitante);
-        void removerLicitante(Licitante licitante);
-        void notificarLicitantes();
-    }
+### Interfaces
+**Observer.java** - Quem escuta
+```java
+public interface Observer {
+    void update(String mensagem);
+}
+```
 
+**Subject.java** - Quem gera o evento
+```java
+public interface Subject {
+    void addObserver(Observer observer);
+    void removeObserver(Observer observer);
+    void notifyObservers(String mensagem);
+}
+```
 <br>
 
-    import java.util.ArrayList;
-    import java.util.List;
-    
-    // ConcreteSubject
-    class Produto implements ProdutoLeilao {
-        private String nome;
-        private double lanceAtual;
-        private List<Licitante> licitantes = new ArrayList<>();
+### Implementações corretas
+**Newsletter.java** - Implementação do Subject
+```java
+import java.util.ArrayList;
+import java.util.List;
 
-    public Produto(String nome, double lanceInicial) {
-        this.nome = nome;
-        this.lanceAtual = lanceInicial;
-    }
+public class Newsletter implements Subject {
+    private List<Observer> observers = new ArrayList<>();
 
-    public void novoLance(double valor) {
-        this.lanceAtual = valor;
-        notificarLicitantes();
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
     }
 
     @Override
-    public void registrarLicitante(Licitante licitante) {
-        licitantes.add(licitante);
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
     }
 
     @Override
-    public void removerLicitante(Licitante licitante) {
-        licitantes.remove(licitante);
-    }
-
-    @Override
-    public void notificarLicitantes() {
-        for (Licitante licitante : licitantes) {
-            licitante.atualizar(nome, lanceAtual);
-        }
-      }
-    }
-
-<br>
-
-    // ConcreteObserver
-    class LicitanteConcreto implements Licitante {
-    private String nome;
-
-    public LicitanteConcreto(String nome) {
-        this.nome = nome;
-    }
-
-    @Override
-    public void atualizar(String nomeProduto, double novoLance) {
-        System.out.println(nome + ", o produto " + nomeProduto + " recebeu um novo lance de R$ " + novoLance);
-      }
-    }
-
-<br>
-
-    public class Leilao {
-        public static void main(String[] args) {
-            Produto produto = new Produto("Notebook Gamer", 2500.00);
-    
-            Licitante licitante1 = new LicitanteConcreto("João");
-            Licitante licitante2 = new LicitanteConcreto("Maria");
-    
-            produto.registrarLicitante(licitante1);
-            produto.registrarLicitante(licitante2);
-    
-            produto.novoLance(2600.00);
-    
-            produto.removerLicitante(licitante1);
-    
-            produto.novoLance(2700.00);
+    public void notifyObservers(String mensagem) {
+        for (Observer observer : observers) {
+            observer.update(mensagem);
         }
     }
+
+    public void publicarNovaNoticia(String noticia) {
+        System.out.println("Publicando notícia: " + noticia);
+        notifyObservers(noticia);
+    }
+}
+```
+
+**EmailSubscriber.java** - Implementação do Observer
+```java
+public class EmailSubscriber implements Observer {
+    private String email;
+
+    public EmailSubscriber(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public void update(String mensagem) {
+        System.out.println("Email enviado para " + email + ": " + mensagem);
+    }
+}
+```
+
+**LogSubscriber.java** - Implementação do Observer
+```java
+public class LogSubscriber implements Observer {
+    @Override
+    public void update(String mensagem) {
+        System.out.println("Log do sistema: Nova atualização recebida - " + mensagem);
+    }
+}
+```
+<br>
+
+### Execução
+**Main.java**
+```java
+public class Main {
+    public static void main(String[] args) {
+        Newsletter newsletter = new Newsletter();
+
+        Observer usuario1 = new EmailSubscriber("joao@email.com");
+        Observer usuario2 = new EmailSubscriber("maria@email.com");
+        Observer sistemaLog = new LogSubscriber();
+
+        newsletter.addObserver(usuario1);
+        newsletter.addObserver(usuario2);
+        newsletter.addObserver(sistemaLog);
+
+        // Uma ação notifica todos os diferentes tipos de observadores
+        newsletter.publicarNovaNoticia("Java 23 Lançado!");
+    }
+}
+```
+<br>
+
+### Diagrama UML
+```mermaid
+classDiagram
+    class Subject {
+        <<interface>>
+        +addObserver(Observer)
+        +removeObserver(Observer)
+        +notifyObservers(String)
+    }
+    class Observer {
+        <<interface>>
+        +update(String)
+    }
+    class Newsletter {
+        -List~Observer~ observers
+        +publicarNovaNoticia(String)
+    }
+    class EmailSubscriber {
+        -String email
+        +update(String)
+    }
+    class LogSubscriber {
+        +update(String)
+    }
+
+    Subject <|.. Newsletter
+    Observer <|.. EmailSubscriber
+    Observer <|.. LogSubscriber
+    Newsletter o--> Observer : notifica
+```

@@ -1,54 +1,59 @@
-<img width="403" height="322" alt="image" src="https://github.com/user-attachments/assets/723e447e-7a6c-476a-9cb1-c2d74e160608" />
+# Strategy: Anti-Pattern
 
+**Conceito:** O uso de herança para variação de comportamento cria uma hierarquia rígida. Se um novo algoritmo é necessário, você é forçado a criar uma subclasse ou modificar uma lógica condicional gigante (switch/case), violando o Princípio Aberto/Fechado (OCP).<br>
+**Objetivo:** Definir uma família de algoritmos, encapsulá-los e torná-los intercambiáveis.<br>
+**Problema:** Uso excessivo de herança ou condicionais (if/else, switch) dentro da classe principal para alternar comportamentos.
 <br>
 
-    public enum TipoFrete {
-        SEDEX,
-        PAC
-    }
-
-    // Classe com o Anti-Padrão
-    public class Pedido {
-        private double pesoTotal;
-    
-        public Pedido(double pesoTotal) {
-            this.pesoTotal = pesoTotal;
+### Implementação incorreta
+**CalculadoraFrete.java**
+```java
+public class CalculadoraFrete {
+    public double calcular(String tipo, double peso) {
+        // ANTI-PATTERN: O código está "fechado" para modificação.
+        // Se surgir um novo tipo, preciso alterar essa classe, violando o OCP (Open/Closed Principle).
+        if (tipo.equals("SEDEX")) {
+            return peso * 5.0;
+        } else if (tipo.equals("PAC")) {
+            return peso * 2.0;
+        } else {
+            return 0;
         }
-    
-        // Método que concentra toda a lógica e viola o Princípio Aberto/Fechado
-        public double calcularFrete(TipoFrete tipo) {
-            double custoFrete = 0.0;
-    
-            switch (tipo) {
-                case SEDEX:
-                    // Lógica de cálculo para Sedex
-                    custoFrete = 10.0 + (this.pesoTotal * 1.5);
-                    break;
-                case PAC:
-                    // Lógica de cálculo para PAC
-                    custoFrete = 5.0 + (this.pesoTotal * 1.1);
-                    break;
-                // Para adicionar um novo tipo (Ex: TRANSPORTADORA),
-                // seria necessário adicionar um novo "case" aqui,
-                // modificando a classe Pedido.
-                default:
-                    throw new IllegalArgumentException("Tipo de frete desconhecido.");
-            }
-
-<br>
-
-    public class Loja {
-        public static void main(String[] args) {
-            Pedido pedido = new Pedido(5.5);
-    
-            // O cliente passa o tipo de frete como um parâmetro
-            double custoSedex = pedido.calcularFrete(TipoFrete.SEDEX);
-            System.out.println("Custo do frete com Sedex: R$ " + custoSedex);
-    
-            double custoPac = pedido.calcularFrete(TipoFrete.PAC);
-            System.out.println("Custo do frete com PAC: R$ " + custoPac);
-        }
-    }
-        return custoFrete;
     }
 }
+```
+<br>
+
+### Execução
+**Main.java**
+```java
+public class Main {
+    public static void main(String[] args) {
+        CalculadoraFrete calc = new CalculadoraFrete();
+        System.out.println("Frete: " + calc.calcular("SEDEX", 10));
+    }
+}
+```
+<br>
+
+### Diagrama UML
+```mermaid
+classDiagram
+    note "Anti-Pattern: Herança Rígida"
+    class CalculadoraFrete {
+        +calcular(tipo: String, peso: double): double
+    }
+    
+    class CalculadoraSedex {
+        +calcular(tipo: String, peso: double): double
+    }
+    
+    class CalculadoraPac {
+        +calcular(tipo: String, peso: double): double
+    }
+
+    CalculadoraFrete <|-- CalculadoraSedex : Herança desnecessária
+    CalculadoraFrete <|-- CalculadoraPac : Herança desnecessária
+    
+    note for CalculadoraFrete "Violação OCP: Se adicionar 'FedEx', precisa criar nova classe ou mexer em IFs internos."
+```
