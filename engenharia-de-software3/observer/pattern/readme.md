@@ -1,6 +1,7 @@
 # Observer: Pattern
 
-**Objetivo:** Definir uma dependência um-para-muitos entre objetos, de modo que quando um objeto muda de estado, todos os seus dependentes sejam notificados.<br>
+**Objetivo:** Definir uma dependência um-para-muitos entre objetos, de modo que quando um objeto muda de estado, todos os seus dependentes sejam notificados.
+<br>
 **Solução:** Usar interfaces para desacoplar o Subject (quem gera o evento) dos Observers (quem escuta).
 <br>
 

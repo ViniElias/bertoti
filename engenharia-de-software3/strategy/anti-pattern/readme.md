@@ -1,7 +1,9 @@
 # Strategy: Anti-Pattern
 
-**Conceito:** O uso de herança para variação de comportamento cria uma hierarquia rígida. Se um novo algoritmo é necessário, você é forçado a criar uma subclasse ou modificar uma lógica condicional gigante (switch/case), violando o Princípio Aberto/Fechado (OCP).<br>
-**Objetivo:** Definir uma família de algoritmos, encapsulá-los e torná-los intercambiáveis.<br>
+**Conceito:** O uso de herança para variação de comportamento cria uma hierarquia rígida. Se um novo algoritmo é necessário, você é forçado a criar uma subclasse ou modificar uma lógica condicional gigante (switch/case), violando o Princípio Aberto/Fechado (OCP).
+<br>
+**Objetivo:** Definir uma família de algoritmos, encapsulá-los e torná-los intercambiáveis.
+<br>
 **Problema:** Uso excessivo de herança ou condicionais (if/else, switch) dentro da classe principal para alternar comportamentos.
 <br>
 

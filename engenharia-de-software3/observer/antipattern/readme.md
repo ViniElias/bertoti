@@ -1,7 +1,9 @@
 # Observer: Anti-Pattern
 
-**Conceito:** O Subject conhece explicitamente a classe concreta do Observer. Isso impede que novos tipos de observadores sejam adicionados sem modificar o código do Subject.<br>
-**Objetivo:** Definir uma dependência um-para-muitos entre objetos, de modo que quando um objeto muda de estado, todos os seus dependentes sejam notificados.<br>
+**Conceito:** O Subject conhece explicitamente a classe concreta do Observer. Isso impede que novos tipos de observadores sejam adicionados sem modificar o código do Subject.
+<br>
+**Objetivo:** Definir uma dependência um-para-muitos entre objetos, de modo que quando um objeto muda de estado, todos os seus dependentes sejam notificados.
+<br>
 **Problema:** Acoplamento Forte (Tight Coupling). O Subject conhece a classe concreta do Observer.
 <br>
 

@@ -1,6 +1,7 @@
 # Strategy: Pattern
 
-**Objetivo:** Definir uma família de algoritmos, encapsulá-los e torná-los intercambiáveis.<br>
+**Objetivo:** Definir uma família de algoritmos, encapsulá-los e torná-los intercambiáveis.
+<br>
 **Solução:** Usar uma Interface comum para as estratégias e compor a classe de contexto com essa interface.
 <br>
 
